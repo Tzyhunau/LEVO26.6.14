@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: cyberedu-agent
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run server:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      # 注意：下面两个变量需要在 Render 后台手动填入你的真实 Key
+      - key: ARK_API_KEY
+        sync: false
+      - key: ARK_ENDPOINT_ID
+        sync: false
